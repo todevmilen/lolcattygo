@@ -14,6 +14,11 @@ func main() {
 		phrases = append(phrases, faker.Hacker().Phrases()...)
 	}
 
-	fmt.Println(strings.Join(phrases[:], "; "))
+	output := strings.Join(phrases[:], "; ")
+	r, g, b := 255, 215, 0 // Gold color
+
+	for j := 0; j < len(output); j++ {
+		fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m", r, g, b, output[j])
+	}
 
 }
